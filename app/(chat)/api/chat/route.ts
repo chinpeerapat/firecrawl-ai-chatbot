@@ -32,9 +32,9 @@ import {
 } from '@/lib/utils';
 
 import { generateTitleFromUserMessage } from '../../actions';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
+config();
 
-dotenv.config();
 const FIRECRAWL_BASE_URL = process.env.FIRECRAWL_BASE_URL || 'https://api.firecrawl.dev';
 
 
