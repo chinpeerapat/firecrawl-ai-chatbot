@@ -35,6 +35,7 @@ import { generateTitleFromUserMessage } from '../../actions';
 import dotenv from 'dotenv';
 
 dotenv.config();
+const FIRECRAWL_BASE_URL = process.env.FIRECRAWL_BASE_URL || 'https://api.firecrawl.dev';
 
 
 export const maxDuration = 60;
@@ -151,7 +152,7 @@ export async function POST(request: Request) {
             execute: async (args) => {
               console.log('firecrawlSearch');
               console.log('args', args);
-              const response = await fetch('https://api.firecrawl.dev/v1/search', {
+              const response = await fetch(`${FIRECRAWL_BASE_URL}/v1/search`, {
                 method: 'POST',
                 headers: {
                   Authorization: `Bearer ${process.env.FIRECRAWL_API_KEY}`,
@@ -192,7 +193,7 @@ export async function POST(request: Request) {
               console.log('firecrawlExtract');
               console.log('args', args);
               // For example, you can allow "https://example.com/*" to crawl entire site
-              const response = await fetch('https://api.firecrawl.dev/v1/extract', {
+              const response = await fetch(`${FIRECRAWL_BASE_URL}/v1/extract`, {
                 method: 'POST',
                 headers: {
                   Authorization: `Bearer ${process.env.FIRECRAWL_API_KEY}`,
